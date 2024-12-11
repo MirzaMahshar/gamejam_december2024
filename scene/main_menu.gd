@@ -1,20 +1,17 @@
 extends CanvasLayer
 
+signal start_game
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	hide()
+	pass # Replace with function body.
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-var displayed = false
-func _on_interactive_object_interact_button_pressed() -> void:
-	if displayed:
-		hide()
-		displayed = false
-		return
-	else:
-		show()
-		displayed = true
+func _on_button_pressed() -> void:
+	start_game.emit()
+	
+	

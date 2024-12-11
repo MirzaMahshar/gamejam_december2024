@@ -6,7 +6,7 @@
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2b1tk"]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="DialogueBox" type="CanvasLayer"]
 script = ExtResource("1_o0lfn")
 
 [node name="Panel" type="Panel" parent="."]

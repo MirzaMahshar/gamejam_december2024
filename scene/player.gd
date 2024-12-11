@@ -1,5 +1,4 @@
 extends CharacterBody2D
-signal hit
 
 # Node reference
 @onready var animation_sprite = $AnimatedSprite2D
@@ -11,12 +10,17 @@ var tile_size = 128
 var new_direction = Vector2(0,1) #only move one spaces
 var animation
 
-var screen_size # Size of the game window.
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	screen_size = get_viewport_rect().size
+	set_physics_process(false)
 	hide()
+
+# Behaviour when new game starts
+func start(pos):
+	position = pos
+	set_physics_process(true)
+	show()
+	$CollisionShape2D.disabled = false
 
 # Movement physics
 func _physics_process(delta):
@@ -73,18 +77,6 @@ func returned_direction(direction : Vector2):
 	#default value is empty
 	return default_return
 
-
-func _on_body_entered(body: Node2D) -> void:
-	hide() # Player disappears after being hit.
-	hit.emit()
-	# Must be deferred as we can't change physics properties on a physics callback.
-	$CollisionShape2D.set_deferred("disabled", true)
-
-func start(pos):
-	position = pos
-	show()
-	$CollisionShape2D.disabled = false
-
 # Emit interactable speech bubble
 func _on_interactive_object_interact_area_reached() -> void:
-	pass
+	push_warning("Interactable object nearby")
