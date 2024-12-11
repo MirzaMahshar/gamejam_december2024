@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4mr8jhxyeurs"]
+
+[ext_resource type="Script" path="res://scene/dialogue_box.gd" id="1_o0lfn"]
+
+[sub_resource type="SystemFont" id="SystemFont_y6gq7"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2b1tk"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_o0lfn")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 64.0
+offset_top = 896.0
+offset_right = 1856.0
+offset_bottom = 1216.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 128.0
+offset_top = 960.0
+offset_right = 1536.0
+offset_bottom = 1152.0
+theme_override_fonts/normal_font = SubResource("SystemFont_y6gq7")
+theme_override_font_sizes/normal_font_size = 36
+text = "Hor hor hor hor hor hor hor hor"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 1600.0
+offset_top = 960.0
+offset_right = 1792.0
+offset_bottom = 1152.0
+texture = SubResource("PlaceholderTexture2D_2b1tk")
+
+[node name="Panel2" type="Panel" parent="."]
+offset_left = 64.0
+offset_top = 768.0
+offset_right = 384.0
+offset_bottom = 880.0
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_left = 128.0
+offset_top = 792.0
+offset_right = 320.0
+offset_bottom = 880.0
+theme_override_fonts/normal_font = SubResource("SystemFont_y6gq7")
+theme_override_font_sizes/normal_font_size = 36
+text = "Cirrus"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hxh81tljxc3d"
-path="res://.godot/imported/Sprite-protagbird4.png-bdae60cb7c37624cef0930d2641d445f.ctex"
+uid="uid://bc55lvkcc5bpp"
+path="res://.godot/imported/Bitmask references 1.png-995f4ed030b71e6abf8e70595da28bea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite/player/Sprite-protagbird4.png"
-dest_files=["res://.godot/imported/Sprite-protagbird4.png-bdae60cb7c37624cef0930d2641d445f.ctex"]
+source_file="res://sprite/tilesets/Bitmask references 1.png"
+dest_files=["res://.godot/imported/Bitmask references 1.png-995f4ed030b71e6abf8e70595da28bea.ctex"]
 
 [params]
 

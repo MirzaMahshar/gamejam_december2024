@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wo44f22idl1m"
-path="res://.godot/imported/Sprite-protagbird3.png-cacd9b3d2e2438570688039478debffd.ctex"
+uid="uid://d0sprcqhfra4i"
+path="res://.godot/imported/Tilled_Dirt_Wide_v2.png-e1dc5242ddb959cc92425d54d7abf929.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite/player/Sprite-protagbird3.png"
-dest_files=["res://.godot/imported/Sprite-protagbird3.png-cacd9b3d2e2438570688039478debffd.ctex"]
+source_file="res://sprite/tilesets/Tilled_Dirt_Wide_v2.png"
+dest_files=["res://.godot/imported/Tilled_Dirt_Wide_v2.png-e1dc5242ddb959cc92425d54d7abf929.ctex"]
 
 [params]
 

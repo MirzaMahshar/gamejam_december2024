@@ -1,6 +1,7 @@
 extends Node
 
 @export var mob_scene: PackedScene
+@export var object_scene: PackedScene
 var score
 	
 func _ready():
@@ -15,6 +16,7 @@ func game_over():
 func new_game():
 	score = 0
 	get_tree().call_group("mobs", "queue_free")
+	#test_object()
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
 	$HUD.update_score(score)
@@ -44,7 +46,12 @@ func _on_mob_timer_timeout() -> void:
 	mob.linear_velocity = velocity.rotated(direction)
 
 	# Spawn the mob by adding it to the Main scene.
-	add_child(mob)
+	#add_child(mob)
+	
+#func test_object() -> void:
+	#var object = object_scene.instantiate()
+	#object.position = (480)
+	#add_child(object)
 
 func _on_score_timer_timeout() -> void:
 	score += 1
