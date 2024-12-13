@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://dm8x78jmase3l"]
+
+[ext_resource type="Script" path="res://scene/cloud.gd" id="1_q5ji5"]
+[ext_resource type="Texture2D" uid="uid://bxhkq0rriqa07" path="res://sprite/cloudshaper/cloud.png" id="2_i308i"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tdqkn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_i308i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xk0ky"]
+radius = 48.0
+height = 128.0
+
+[node name="Cloud" type="RigidBody2D"]
+position = Vector2(352, 928)
+input_pickable = true
+mass = 2.0
+gravity_scale = 0.0
+script = ExtResource("1_q5ji5")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tdqkn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_xk0ky")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
