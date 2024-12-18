@@ -1,47 +1,50 @@
-[gd_scene load_steps=4 format=3 uid="uid://d4mr8jhxyeurs"]
+[gd_scene load_steps=7 format=3 uid="uid://c30lgrwhhhprt"]
 
 [ext_resource type="Script" path="res://scene/dialogue_box.gd" id="1_o0lfn"]
+[ext_resource type="Texture2D" uid="uid://dgktvongngyvx" path="res://sprite/dialogue/dialogue_box2.png" id="2_67muw"]
+[ext_resource type="Texture2D" uid="uid://ewfc7o7ucj8k" path="res://sprite/player/Sprite-protagbird.png" id="3_b83ob"]
+[ext_resource type="AudioStream" uid="uid://cqslg73f1i3lk" path="res://audio/tone beep.wav" id="4_n8i5s"]
 
-[sub_resource type="SystemFont" id="SystemFont_y6gq7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_myk1d"]
+atlas = ExtResource("3_b83ob")
+region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2b1tk"]
+[sub_resource type="SystemFont" id="SystemFont_nmdpa"]
+subpixel_positioning = 0
 
 [node name="DialogueBox" type="CanvasLayer"]
 script = ExtResource("1_o0lfn")
 
-[node name="Panel" type="Panel" parent="."]
-offset_left = 64.0
-offset_top = 896.0
-offset_right = 1856.0
-offset_bottom = 1216.0
+[node name="DialogueBackground" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1280.0
+texture = ExtResource("2_67muw")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 128.0
+[node name="DialogueText" type="RichTextLabel" parent="."]
+offset_left = 192.0
 offset_top = 960.0
-offset_right = 1536.0
+offset_right = 1408.0
 offset_bottom = 1152.0
-theme_override_fonts/normal_font = SubResource("SystemFont_y6gq7")
+theme_override_font_sizes/italics_font_size = 36
 theme_override_font_sizes/normal_font_size = 36
-text = "Hor hor hor hor hor hor hor hor"
+bbcode_enabled = true
+text = "Placeholder Text"
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_left = 1600.0
+[node name="CharPicture" type="TextureRect" parent="."]
+offset_left = 1472.0
 offset_top = 960.0
-offset_right = 1792.0
+offset_right = 1664.0
 offset_bottom = 1152.0
-texture = SubResource("PlaceholderTexture2D_2b1tk")
+texture = SubResource("AtlasTexture_myk1d")
 
-[node name="Panel2" type="Panel" parent="."]
-offset_left = 64.0
-offset_top = 768.0
-offset_right = 384.0
-offset_bottom = 880.0
+[node name="CharName" type="Label" parent="."]
+offset_left = 256.0
+offset_top = 776.0
+offset_right = 544.0
+offset_bottom = 856.0
+theme_override_fonts/font = SubResource("SystemFont_nmdpa")
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="."]
-offset_left = 128.0
-offset_top = 792.0
-offset_right = 320.0
-offset_bottom = 880.0
-theme_override_fonts/normal_font = SubResource("SystemFont_y6gq7")
-theme_override_font_sizes/normal_font_size = 36
-text = "Cirrus"
+[node name="Beep" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_n8i5s")

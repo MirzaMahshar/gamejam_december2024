@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ggvqro0ygh6j"]
+[gd_scene load_steps=17 format=3 uid="uid://5rhp3ju7iydy"]
 
 [ext_resource type="Script" path="res://scene/mob.gd" id="1_cywng"]
 [ext_resource type="Texture2D" uid="uid://dtwluarsna57r" path="res://sprite/enemy/idle.png" id="2_cb4qx"]

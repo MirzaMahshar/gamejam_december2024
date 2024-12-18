@@ -1,14 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://bats2q7kjjhfg"]
+[gd_scene load_steps=3 format=3 uid="uid://dessus0kjbo4r"]
 
 [ext_resource type="Script" path="res://scene/main_menu.gd" id="1_pqet7"]
+[ext_resource type="Texture2D" uid="uid://bo2fdhp80imbk" path="res://sprite/dialogue/screenshot.png" id="2_1ok5n"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_pqet7")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
+self_modulate = Color(0.493545, 0.493546, 0.493546, 1)
 offset_right = 1920.0
 offset_bottom = 1280.0
-color = Color(0.0707441, 0.21907, 0.236214, 1)
+texture = ExtResource("2_1ok5n")
 
 [node name="Label" type="Label" parent="ColorRect"]
 layout_mode = 1
@@ -23,8 +25,10 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
 theme_override_font_sizes/font_size = 128
-text = "Game Name"
+text = "Cloud Shaper Prototype"
 
 [node name="Button" type="Button" parent="."]
 anchors_preset = 7

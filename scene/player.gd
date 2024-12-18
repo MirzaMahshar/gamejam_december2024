@@ -46,6 +46,7 @@ func _physics_process(delta):
 	#plays animations
 	player_animations(direction)
 
+
 # Animations
 func player_animations(direction : Vector2):
 	# If player is moving
@@ -78,5 +79,27 @@ func returned_direction(direction : Vector2):
 	return default_return
 
 # Emit interactable speech bubble
-func _on_interactive_object_interact_area_reached() -> void:
-	push_warning("Interactable object nearby")
+func interact_popup(activate) -> void:
+	if activate:
+		$InteractPopup.show()
+		$InteractPopup/InteractButton.play()
+	else:
+		$InteractPopup.hide()
+		$InteractPopup/InteractButton.stop()
+		
+		
+var cloudshaper_strategy
+# Cloudshaper strategy
+func execute_cloudshaper(strategy):
+	match strategy:
+		"Defend":
+			$DefendWall.show()
+			$DefendWall/AnimatedSprite2D.play()
+		"Attack":
+			pass
+		_:
+			$DefendWall.hide()
+			$DefendWall/AnimatedSprite2D.stop()
+
+func debug_test():
+	push_warning("Player accessed from main")

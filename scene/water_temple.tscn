@@ -1,9 +1,12 @@
-[gd_scene load_steps=9 format=4 uid="uid://dh1e72pvucpkk"]
+[gd_scene load_steps=14 format=4 uid="uid://busf0ggnckl3q"]
 
 [ext_resource type="Texture2D" uid="uid://b4w0xy1um2251" path="res://sprite/tilesets/watertemple.png" id="1_5ppmd"]
 [ext_resource type="Script" path="res://scene/water_temple.gd" id="1_wqoog"]
-[ext_resource type="PackedScene" uid="uid://cox40u0qg0b1f" path="res://scene/player.tscn" id="2_2htxo"]
-[ext_resource type="PackedScene" uid="uid://hi0i22it7ubb" path="res://scene/start_position.tscn" id="4_8gpoc"]
+[ext_resource type="PackedScene" uid="uid://caanquf8m0oed" path="res://scene/player.tscn" id="2_2htxo"]
+[ext_resource type="PackedScene" path="res://scene/start_position.tscn" id="4_8gpoc"]
+[ext_resource type="AudioStream" uid="uid://bfgmp4iix5ort" path="res://audio/prologuecs.mp3" id="5_wlpaf"]
+[ext_resource type="PackedScene" uid="uid://bkngoa61hhw1j" path="res://scene/npc.tscn" id="6_h34wr"]
+[ext_resource type="Texture2D" uid="uid://comqu4wx84v64" path="res://sprite/npc/hooded-bird.png" id="7_fjifc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8oxwa"]
 texture = ExtResource("1_5ppmd")
@@ -170,6 +173,12 @@ tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_obmm6")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vm0o1"]
+size = Vector2(128, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dgb8f"]
+atlas = ExtResource("7_fjifc")
+
 [node name="WaterTemple" type="Node"]
 script = ExtResource("1_wqoog")
 
@@ -186,3 +195,25 @@ position = Vector2(568, 848)
 
 [node name="StartPosition" parent="." instance=ExtResource("4_8gpoc")]
 position = Vector2(960, 1088)
+
+[node name="Teleport" type="Area2D" parent="."]
+position = Vector2(960, 256)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Teleport"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_vm0o1")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_wlpaf")
+autoplay = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.47788, 0.47788, 0.47788, 1)
+
+[node name="Stranger" parent="." instance=ExtResource("6_h34wr")]
+position = Vector2(1160, 352)
+npc_name = "???"
+dialogue_text = "I sense...something evil approaching. Is this the end of the Aero District?"
+npc_image = SubResource("AtlasTexture_dgb8f")
+
+[connection signal="body_entered" from="Teleport" to="." method="_on_teleport_body_entered"]

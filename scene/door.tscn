@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://csrwrajniox88"]
+
+[ext_resource type="Script" path="res://door.gd" id="1_atinu"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_epnwm"]
+size = Vector2(64, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xqe8x"]
+size = Vector2(128, 256)
+
+[node name="Door" type="Area2D" groups=["Door", "InteractiveObject"]]
+script = ExtResource("1_atinu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_epnwm")
+
+[node name="InteractCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xqe8x")
+
+[connection signal="body_entered" from="." to="." method="_on_interact_collision_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_interact_collision_body_exited"]

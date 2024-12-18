@@ -1,7 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://cox40u0qg0b1f"]
+[gd_scene load_steps=32 format=3 uid="uid://caanquf8m0oed"]
 
 [ext_resource type="Script" path="res://scene/player.gd" id="1_bratv"]
 [ext_resource type="Texture2D" uid="uid://ewfc7o7ucj8k" path="res://sprite/player/Sprite-protagbird.png" id="2_ot86t"]
+[ext_resource type="Texture2D" uid="uid://gr35jukwy31v" path="res://sprite/player/water_droplet.png" id="3_1aadt"]
+[ext_resource type="Texture2D" uid="uid://dhykqk35yajd6" path="res://sprite/dialogue/Z-Key-sheet.png" id="3_d56g5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f1ggf"]
 atlas = ExtResource("2_ot86t")
@@ -150,21 +152,102 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_csj0p"]
-radius = 48.0
-height = 96.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gsy5e"]
+size = Vector2(80, 48)
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sb5wf"]
+size = Vector2(224, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyijy"]
+atlas = ExtResource("3_1aadt")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xg7yo"]
+atlas = ExtResource("3_1aadt")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ya0jm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyijy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xg7yo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.5
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jeqo1"]
+atlas = ExtResource("3_d56g5")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yaw2a"]
+atlas = ExtResource("3_d56g5")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0d00q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jeqo1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yaw2a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="SystemFont" id="SystemFont_ndep2"]
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_bratv")
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hlo8m")
 animation = &"walk_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5)
-shape = SubResource("CapsuleShape2D_csj0p")
+position = Vector2(0, 24)
+shape = SubResource("RectangleShape2D_gsy5e")
+
+[node name="DefendWall" type="Area2D" parent="."]
+visible = false
+z_index = 1
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DefendWall"]
+shape = SubResource("RectangleShape2D_sb5wf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="DefendWall"]
+sprite_frames = SubResource("SpriteFrames_ya0jm")
+frame_progress = 0.832493
+
+[node name="InteractPopup" type="Area2D" parent="."]
+visible = false
+z_index = 1
+
+[node name="InteractButton" type="AnimatedSprite2D" parent="InteractPopup"]
+position = Vector2(-40, -72)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_0d00q")
+frame_progress = 0.248788
+
+[node name="InteractText" type="Label" parent="InteractPopup"]
+offset_left = -8.0
+offset_top = -96.0
+offset_right = 114.0
+offset_bottom = -51.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = SubResource("SystemFont_ndep2")
+theme_override_font_sizes/font_size = 32
+text = "Interact"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 editor_draw_limits = true
+metadata/_edit_lock_ = true

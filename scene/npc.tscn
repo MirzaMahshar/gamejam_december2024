@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkngoa61hhw1j"]
+
+[ext_resource type="Script" path="res://npc.gd" id="1_o86jc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_65rgd"]
+radius = 48.0
+height = 96.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pate2"]
+size = Vector2(208, 192)
+
+[node name="NPC" type="StaticBody2D" groups=["NPC"]]
+script = ExtResource("1_o86jc")
+
+[node name="SelfCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_65rgd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="InteractCollision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractCollision"]
+shape = SubResource("RectangleShape2D_pate2")
+
+[connection signal="body_entered" from="InteractCollision" to="." method="_on_interact_collision_body_entered"]
+[connection signal="body_exited" from="InteractCollision" to="." method="_on_interact_collision_body_exited"]
